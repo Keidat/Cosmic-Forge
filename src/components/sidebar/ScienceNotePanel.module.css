@@ -1,0 +1,71 @@
+.panel {
+  background-color: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+  padding: var(--spacing-md);
+  width: 300px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.title {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.item {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.locked {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
+.lockIcon {
+  opacity: 0.6;
+}
+
+.lockedTitle {
+  font-size: var(--font-size-sm);
+  letter-spacing: 2px;
+}
+
+.noteButton {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--color-accent-gold);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.noteIcon {
+  font-size: 0.7rem;
+}
+
+.content {
+  margin: var(--spacing-xs) 0 0 var(--spacing-md);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}

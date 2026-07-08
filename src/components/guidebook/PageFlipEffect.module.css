@@ -1,0 +1,15 @@
+.pageFlip {
+  animation: pageTurn 400ms ease-out;
+  transform-origin: left center;
+}
+
+@keyframes pageTurn {
+  0% {
+    opacity: 0;
+    transform: rotateY(-12deg) translateX(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(0);
+  }
+}

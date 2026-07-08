@@ -1,0 +1,79 @@
+.guidebook {
+  position: fixed;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 1800;
+  width: 260px;
+  background-color: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+  padding: var(--spacing-md);
+  padding-top: calc(var(--spacing-md) + 6px);
+}
+
+.spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+}
+
+.minimizeButton {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  padding: 2px 6px;
+}
+
+.minimizeButton:hover {
+  color: var(--color-text-primary);
+}
+
+.title {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-md);
+  color: var(--color-accent-primary);
+}
+
+.body {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.navButton {
+  flex: 1;
+  background-color: var(--color-bg-panel-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.navButton:hover:not(:disabled) {
+  border-color: var(--color-accent-primary);
+}
+
+.navButton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

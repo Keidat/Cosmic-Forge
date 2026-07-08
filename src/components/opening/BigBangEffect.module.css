@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg-void); /* #000000 → 실제 게임 배경색과 통일 */
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3vmax;
+  height: 3vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    #ffffff 35%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(230, 238, 255, 0.6) 65%,
+    rgba(207, 224, 255, 0.3) 78%,
+    rgba(207, 224, 255, 0.1) 90%,
+    rgba(111, 158, 255, 0) 100%
+  );
+  filter: blur(4px);
+  transform: translate(-50%, -50%) scale(0);
+  animation: flashExpand 3300ms ease-out forwards;
+}
+
+@keyframes flashExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  70% {
+    /* 커지는 구간을 0~70%(약 2.3초)로 늘려서 천천히 확산되는 느낌 */
+    transform: translate(-50%, -50%) scale(90);
+    opacity: 1;
+  }
+  85% {
+    transform: translate(-50%, -50%) scale(90);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(95);
+    opacity: 0;
+  }
+}
+
+.burstParticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: burstFly 3200ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation-delay: 150ms;
+}
+
+@keyframes burstFly {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(0.3);
+    opacity: 0;
+  }
+}
