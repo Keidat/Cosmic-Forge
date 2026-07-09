@@ -1,6 +1,7 @@
 export const ELEMENTS = [
   {
     id: "hydrogen",
+    color: "#8fd8ff",
     symbol: "H",
     name: "수소",
     recipe: { proton: 1, neutron: 0, electron: 1 },
@@ -12,6 +13,7 @@ export const ELEMENTS = [
   },
   {
     id: "helium",
+    color: "#c9a3ff",
     symbol: "He",
     name: "헬륨",
     recipe: { proton: 2, neutron: 2, electron: 2 },
@@ -23,6 +25,7 @@ export const ELEMENTS = [
   },
   {
     id: "lithium",
+    color: "#ff8f6b",
     symbol: "Li",
     name: "리튬",
     recipe: { proton: 3, neutron: 4, electron: 3 },
@@ -34,6 +37,7 @@ export const ELEMENTS = [
   },
   {
     id: "carbon",
+    color: "#b8b8c9",
     symbol: "C",
     name: "탄소",
     recipe: { proton: 6, neutron: 6, electron: 6 },
@@ -45,6 +49,7 @@ export const ELEMENTS = [
   },
   {
     id: "nitrogen",
+    color: "#7ea8ff",
     symbol: "N",
     name: "질소",
     recipe: { proton: 7, neutron: 7, electron: 7 },
@@ -56,6 +61,7 @@ export const ELEMENTS = [
   },
   {
     id: "oxygen",
+    color: "#7dffb0",
     symbol: "O",
     name: "산소",
     recipe: { proton: 8, neutron: 8, electron: 8 },
@@ -67,6 +73,7 @@ export const ELEMENTS = [
   },
   {
     id: "neon",
+    color: "#ff7fd6",
     symbol: "Ne",
     name: "네온",
     recipe: { proton: 10, neutron: 10, electron: 10 },
@@ -78,6 +85,7 @@ export const ELEMENTS = [
   },
   {
     id: "magnesium",
+    color: "#c6ff7e",
     symbol: "Mg",
     name: "마그네슘",
     recipe: { proton: 12, neutron: 12, electron: 12 },
@@ -89,6 +97,7 @@ export const ELEMENTS = [
   },
   {
     id: "silicon",
+    color: "#ffcf5c",
     symbol: "Si",
     name: "규소",
     recipe: { proton: 14, neutron: 14, electron: 14 },
@@ -100,6 +109,7 @@ export const ELEMENTS = [
   },
   {
     id: "sulfur",
+    color: "#fff066",
     symbol: "S",
     name: "황",
     recipe: { proton: 16, neutron: 16, electron: 16 },
@@ -111,6 +121,7 @@ export const ELEMENTS = [
   },
   {
     id: "phosphorus",
+    color: "#6bfff0",
     symbol: "P",
     name: "인",
     recipe: { proton: 15, neutron: 16, electron: 15 },
@@ -122,6 +133,7 @@ export const ELEMENTS = [
   },
   {
     id: "iron",
+    color: "#ff7d6b",
     symbol: "Fe",
     name: "철",
     recipe: { proton: 26, neutron: 30, electron: 26 },

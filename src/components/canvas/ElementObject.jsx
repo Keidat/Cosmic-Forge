@@ -45,6 +45,7 @@ export default function ElementObject({ entry, containerRef, onDragEnd }) {
       style={{
         left: `${entry.position.x + dragOffset.x}%`,
         top: `${entry.position.y + dragOffset.y}%`,
+        "--element-color": element.color,
       }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}

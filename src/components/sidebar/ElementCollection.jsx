@@ -70,6 +70,7 @@ export default function ElementCollection() {
                             key={element.id}
                             type="button"
                             className={`${styles.cell} ${styles.discovered}`}
+                            style={{ "--element-color": element.color }}
                             onClick={() => summonElement(element.id)}
                             title={`${element.name} 소환하기`}
                         >

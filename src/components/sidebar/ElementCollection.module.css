@@ -95,21 +95,22 @@
 }
 
 .discovered {
-  background-color: rgba(111, 158, 255, 0.12);
+  background-color: color-mix(in srgb, var(--element-color, var(--color-accent-primary)) 12%, transparent);
+  border-color: color-mix(in srgb, var(--element-color, var(--color-accent-primary)) 45%, var(--color-border));
   color: var(--color-text-primary);
   cursor: pointer;
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .discovered:hover {
-  background-color: rgba(111, 158, 255, 0.24);
+  background-color: color-mix(in srgb, var(--element-color, var(--color-accent-primary)) 24%, transparent);
   transform: translateY(-2px);
 }
 
 .symbol {
   font-size: var(--font-size-lg);
   font-weight: 700;
-  color: var(--color-accent-primary);
+  color: var(--element-color, var(--color-accent-primary));
 }
 
 .name {
