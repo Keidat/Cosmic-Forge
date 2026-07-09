@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useStarFormation } from "../../hooks/useStarFormation.js";
+import { getStarStageColors } from "../../utils/starFusion.js";
 import styles from "./StarObject.module.css";
 
 const EXPLODE_PHASE_MS = 1000; // 500 → 1000
@@ -16,6 +17,7 @@ export default function StarObject({ star }) {
 
   const remainingMs = Math.max(50, star.explodeAt - Date.now());
   const shrinkMs = Math.max(0, remainingMs - EXPLODE_PHASE_MS);
+  const stageColors = getStarStageColors(star.explodeSeconds);
 
   return (
     <div
@@ -25,6 +27,10 @@ export default function StarObject({ star }) {
         top: `${star.position.y}%`,
         animationDuration: `${shrinkMs}ms, ${EXPLODE_PHASE_MS}ms`,
         animationDelay: `0ms, ${shrinkMs}ms`,
+        "--star-core": stageColors.core,
+        "--star-mid": stageColors.mid,
+        "--star-edge": stageColors.edge,
+        "--star-glow": stageColors.glow,
       }}
     />
   );
