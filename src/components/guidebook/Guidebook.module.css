@@ -7,7 +7,7 @@
   background-color: var(--color-bg-panel);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-panel);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(111, 158, 255, 0.15);
   padding: var(--spacing-md);
   padding-top: calc(var(--spacing-md) + 6px);
 }
@@ -48,6 +48,29 @@
   margin: 0;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.tipBox {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: rgba(255, 216, 115, 0.08);
+  border: 1px solid rgba(255, 216, 115, 0.35);
+  border-radius: var(--radius-sm);
+}
+
+.tipIcon {
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+}
+
+.tipText {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-accent-gold);
   line-height: 1.5;
 }
 

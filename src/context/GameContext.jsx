@@ -13,6 +13,10 @@ function createParticleId(type) {
   return `particle_${type}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
 }
 
+function createStarGeneratorId() {
+  return `stargen_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
+}
+
 export function GameProvider({ children }) {
   const { gameProgress, setGameProgress, resetGameProgress } = useGameProgress();
 
@@ -42,6 +46,7 @@ export function GameProvider({ children }) {
         ...prev,
         hasSeenOpening: true,
         particles: generateInitialParticles(),
+        guidebook: { currentPage: 0, maxUnlockedPage: 0 }, // 빅뱅 순간 무조건 0으로 강제
       };
     });
   }
@@ -86,6 +91,22 @@ export function GameProvider({ children }) {
     }));
   }
 
+  function summonStarGenerator() {
+    const jitterX = (Math.random() - 0.5) * 16;
+    const jitterY = (Math.random() - 0.5) * 16;
+    const newEntry = {
+      id: createStarGeneratorId(),
+      position: {
+        x: Math.min(90, Math.max(10, 50 + jitterX)),
+        y: Math.min(90, Math.max(10, 50 + jitterY)),
+      },
+    };
+    setGameProgress((prev) => ({
+      ...prev,
+      starGenerators: [...(prev.starGenerators || []), newEntry],
+    }));
+  }
+
   function moveCanvasElement(entryId, newPosition) {
     setGameProgress((prev) => ({
       ...prev,
@@ -102,6 +123,7 @@ export function GameProvider({ children }) {
     igniteBigBang,
     summonElement,
     summonParticle,
+    summonStarGenerator,
     moveCanvasElement,
   };
 

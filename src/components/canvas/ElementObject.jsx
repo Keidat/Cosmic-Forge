@@ -1,10 +1,8 @@
 import { useRef, useState } from "react";
-import { useGame } from "../../context/GameContext.jsx";
 import { getElementById } from "../../data/elements.js";
 import styles from "./ElementObject.module.css";
 
-export default function ElementObject({ entry, containerRef }) {
-  const { moveCanvasElement } = useGame();
+export default function ElementObject({ entry, containerRef, onDragEnd }) {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ clientX: 0, clientY: 0 });
@@ -35,7 +33,7 @@ export default function ElementObject({ entry, containerRef }) {
       x: entry.position.x + dragOffset.x,
       y: entry.position.y + dragOffset.y,
     };
-    moveCanvasElement(entry.id, finalPosition);
+    onDragEnd(entry.id, finalPosition, entry.elementId);
     setDragOffset({ x: 0, y: 0 });
   }
 
@@ -43,7 +41,7 @@ export default function ElementObject({ entry, containerRef }) {
 
   return (
     <div
-      className={styles.elementObject}
+      className={`${styles.elementObject} ${isDragging ? styles.dragging : ""}`}
       style={{
         left: `${entry.position.x + dragOffset.x}%`,
         top: `${entry.position.y + dragOffset.y}%`,

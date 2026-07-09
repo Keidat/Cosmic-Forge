@@ -5,6 +5,7 @@
   bottom: 0;
   z-index: 1900;
   display: flex;
+  pointer-events: none;
 }
 
 .iconRail {
@@ -16,6 +17,7 @@
   align-items: center;
   padding-top: var(--spacing-lg);
   gap: var(--spacing-sm);
+  pointer-events: auto;
 }
 
 .iconButton {
@@ -47,4 +49,5 @@
 .panelOverlay {
   align-self: flex-start;
   margin: var(--spacing-lg) 0 0 var(--spacing-sm);
+  pointer-events: auto;
 }

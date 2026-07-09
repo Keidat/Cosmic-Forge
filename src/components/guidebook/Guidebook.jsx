@@ -6,6 +6,18 @@ import styles from "./Guidebook.module.css";
 
 const SORTED_MISSIONS = [...MISSIONS].sort((a, b) => a.order - b.order);
 
+// "첫 별 탄생" 단계에서만 노출되는 대비책 안내 (수소 12개가 필요한데, 처음 나온 입자를 이미 다 썼을 경우)
+const PARTICLE_SHORTAGE_TIP =
+  "입자가 부족하다면 왼쪽 사이드바 📖 도감에서 기본 입자를 다시 소환할 수 있습니다.";
+
+const STAR_GENERATOR_UNLOCKED_TIP =
+  "도감에 별 생성기가 잠금 해제되었습니다 — 이제 수소 12개를 매번 모으지 않고 도감에서 바로 소환할 수 있습니다.";
+
+const PAGE_TIPS = {
+  4: [PARTICLE_SHORTAGE_TIP],
+  6: [STAR_GENERATOR_UNLOCKED_TIP],
+};
+
 function getPageContent(pageNumber) {
   if (pageNumber === 0) {
     return {
@@ -25,6 +37,7 @@ export default function Guidebook() {
   const [isMinimized, setIsMinimized] = useState(false);
   const isViewingPast = currentPage < maxUnlockedPage;
   const content = getPageContent(currentPage);
+  const tips = PAGE_TIPS[currentPage] || [];
 
   return (
     <div className={styles.guidebook}>
@@ -42,6 +55,12 @@ export default function Guidebook() {
           <PageFlipEffect pageKey={currentPage}>
             <h3 className={styles.title}>{content.title}</h3>
             <p className={styles.body}>{content.body}</p>
+            {tips.map((tip) => (
+              <div key={tip} className={styles.tipBox}>
+                <span className={styles.tipIcon}>💡</span>
+                <p className={styles.tipText}>{tip}</p>
+              </div>
+            ))}
           </PageFlipEffect>
           <div className={styles.controls}>
             <button

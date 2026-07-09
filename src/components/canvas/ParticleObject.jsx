@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ParticleObject.module.css";
 
-const PARTICLE_SIZE_PX = { proton: 22, neutron: 22, electron: 14 };
+const PARTICLE_SIZE_PX = { proton: 26, neutron: 26, electron: 18 }; // 22/22/14 → 26/26/18
 const BOUNCE_DURATION_MS = 350;
 
 export default function ParticleObject({ particle, containerRef, onDragEnd }) {

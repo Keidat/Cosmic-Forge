@@ -5,7 +5,9 @@ export function evaluateCondition(condition, gameProgress) {
     case "elementDiscovered":
       return Boolean(gameProgress.elements[condition.target]?.discovered);
     case "starCreated":
-      return gameProgress.stars.length > 0;
+      return Boolean(gameProgress.milestones?.firstStarCreated);
+    case "addedToStar":
+      return Boolean(gameProgress.milestones?.hasAddedToStarOnce);
     case "firstElementEver":
       return Object.values(gameProgress.elements).some((element) => element.discovered);
     case "lifeElementsCompleted":
