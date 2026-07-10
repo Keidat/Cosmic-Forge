@@ -22,7 +22,7 @@ function getPageContent(pageNumber) {
   if (pageNumber === 0) {
     return {
       title: "코스믹 포지",
-      body: "입자들을 서로 가까이 끌어다 놓아 원소를 만들어보세요. 첫 목표는 수소입니다.",
+      body: "화면에 떠다니는 작은 점들이 입자입니다. 마우스로 하나를 잡아서 다른 입자 위로 끌어다 놓아보세요. 조건에 맞으면 새로운 원소가 만들어집니다.",
     };
   }
   const mission = SORTED_MISSIONS[pageNumber - 1];

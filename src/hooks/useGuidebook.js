@@ -17,9 +17,9 @@ export function useGuidebook() {
                 break;
             }
         }
-        return Math.min(count + 1, SORTED_MISSIONS.length); // 완료 개수가 아니라 "다음 안내 페이지"를 가리키도록 +1
+        return Math.min(count + 1, SORTED_MISSIONS.length + 1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [gameProgress.elements, gameProgress.stars]);
+    }, [gameProgress.elements, gameProgress.stars, gameProgress.milestones]);
 
     useEffect(() => {
         setGameProgress((prev) => {
