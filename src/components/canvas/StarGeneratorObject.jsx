@@ -1,12 +1,14 @@
 import { useDragAndDrop } from "../../hooks/useDragAndDrop.js";
 import styles from "./StarGeneratorObject.module.css";
 
-export default function StarGeneratorObject({ entry, containerRef, onDragEnd }) {
+export default function StarGeneratorObject({ entry, containerRef, discardZoneRef, onDragEnd, onDiscard }) {
   const { displayPosition, isDragging, handlePointerDown, handlePointerMove, handlePointerUp } =
     useDragAndDrop({
       containerRef,
       position: entry.position,
       onDrop: (finalPosition) => onDragEnd(entry.id, finalPosition),
+      discardZoneRef,
+      onDiscard: () => onDiscard(entry.id),
     });
 
   return (

@@ -4,7 +4,7 @@ import styles from "./ParticleObject.module.css";
 const PARTICLE_SIZE_PX = { proton: 26, neutron: 26, electron: 18 }; // 22/22/14 → 26/26/18
 const BOUNCE_DURATION_MS = 350;
 
-export default function ParticleObject({ particle, containerRef, onDragEnd }) {
+export default function ParticleObject({ particle, containerRef, discardZoneRef, onDragEnd, onDiscard }) {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [isBouncing, setIsBouncing] = useState(false);
@@ -39,6 +39,21 @@ export default function ParticleObject({ particle, containerRef, onDragEnd }) {
     if (!isDragging) return;
     setIsDragging(false);
     event.currentTarget.releasePointerCapture(event.pointerId);
+
+    // 드롭 지점이 "저 멀리 보내기" 구역 위라면 조합 판정 없이 그쪽으로 보낸다
+    if (discardZoneRef?.current) {
+      const zoneRect = discardZoneRef.current.getBoundingClientRect();
+      const isOverDiscard =
+        event.clientX >= zoneRect.left &&
+        event.clientX <= zoneRect.right &&
+        event.clientY >= zoneRect.top &&
+        event.clientY <= zoneRect.bottom;
+      if (isOverDiscard) {
+        setDragOffset({ x: 0, y: 0 });
+        onDiscard(particle.id);
+        return;
+      }
+    }
 
     const finalPosition = {
       x: particle.position.x + dragOffset.x,

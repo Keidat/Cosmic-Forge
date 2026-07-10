@@ -116,6 +116,28 @@ export function GameProvider({ children }) {
     }));
   }
 
+  // "저 멀리 보내기" — 삭제가 아니라 화면 밖(먼 우주)으로 보내는 컨셉
+  function discardParticle(particleId) {
+    setGameProgress((prev) => ({
+      ...prev,
+      particles: prev.particles.filter((particle) => particle.id !== particleId),
+    }));
+  }
+
+  function discardCanvasElement(entryId) {
+    setGameProgress((prev) => ({
+      ...prev,
+      canvasElements: prev.canvasElements.filter((entry) => entry.id !== entryId),
+    }));
+  }
+
+  function discardStarGenerator(generatorId) {
+    setGameProgress((prev) => ({
+      ...prev,
+      starGenerators: (prev.starGenerators || []).filter((entry) => entry.id !== generatorId),
+    }));
+  }
+
   const value = {
     gameProgress,
     setGameProgress,
@@ -125,6 +147,9 @@ export function GameProvider({ children }) {
     summonParticle,
     summonStarGenerator,
     moveCanvasElement,
+    discardParticle,
+    discardCanvasElement,
+    discardStarGenerator,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

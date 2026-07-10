@@ -2,7 +2,8 @@ export const MISSIONS = [
   {
     id: "mission_create_hydrogen",
     title: "수소 생성",
-    description: "양성자 1개와 전자 1개를 가까이 놓아보세요.",
+    description:
+      "화면에 떠다니는 작은 점들이 입자입니다. 주황색 입자(양성자) 1개와 하늘색 입자(전자) 1개를 마우스로 끌어서 서로 겹치게 놓아보세요.",
     condition: { type: "elementDiscovered", target: "hydrogen" },
     completed: false,
     order: 1,
@@ -10,7 +11,8 @@ export const MISSIONS = [
   {
     id: "mission_create_helium",
     title: "헬륨 생성",
-    description: "양성자 2개, 중성자 2개, 전자 2개를 모아보세요.",
+    description:
+      "주황색 입자(양성자) 2개, 회색 입자(중성자) 2개, 하늘색 입자(전자) 2개, 총 6개를 한 곳에 겹쳐 모아보세요.",
     condition: { type: "elementDiscovered", target: "helium" },
     completed: false,
     order: 2,
@@ -18,7 +20,7 @@ export const MISSIONS = [
   {
     id: "mission_create_lithium",
     title: "리튬 생성",
-    description: "양성자 3개, 중성자 4개, 전자 3개를 모아보세요.",
+    description: "양성자 3개, 중성자 4개, 전자 3개, 총 10개를 한 곳에 겹쳐 모아보세요.",
     condition: { type: "elementDiscovered", target: "lithium" },
     completed: false,
     order: 3,
@@ -26,7 +28,8 @@ export const MISSIONS = [
   {
     id: "mission_create_first_star",
     title: "첫 별 탄생",
-    description: "수소 12개와 헬륨 1개를 한 자리에 모아보세요.",
+    description:
+      "왼쪽 사이드바의 📖 도감을 열면 이미 만든 원소를 클릭해서 캔버스에 다시 소환할 수 있습니다. 수소를 12번, 헬륨을 1번 소환해서 한 자리에 모아보세요.",
     condition: { type: "starCreated" },
     completed: false,
     order: 4,
@@ -34,7 +37,7 @@ export const MISSIONS = [
   {
     id: "mission_star_first_explosion",
     title: "별의 폭발",
-    description: "별이 터질 때까지 기다려보세요.",
+    description: "별은 태어난 뒤 스스로 수축하다가 터집니다. 가만히 기다려보면 주변에 새로운 원소가 나타납니다.",
     condition: { type: "elementDiscovered", target: "carbon" },
     completed: false,
     order: 5,
@@ -42,7 +45,8 @@ export const MISSIONS = [
   {
     id: "mission_add_element_to_star",
     title: "재료 추가하기",
-    description: "폭발로 얻은 것들을 새로 태어난 별에 다시 넣어보세요.",
+    description:
+      "별이 폭발하면 근처에 탄소와 산소가 생깁니다. 별이 또 태어나면, 터지기 전에 그 탄소나 산소를 끌어다 별 위에 놓아보세요.",
     condition: { type: "addedToStar" },
     completed: false,
     order: 6,
@@ -50,7 +54,8 @@ export const MISSIONS = [
   {
     id: "mission_create_iron",
     title: "철의 탄생",
-    description: "별의 반응 시간을 최대한 늘려보세요.",
+    description:
+      "새로 태어난 별에 탄소와 산소를 둘 다 넣고, 이어서 규소까지 넣어보세요. 반응이 가장 오래 지속되어 철까지 만들어집니다.",
     condition: { type: "elementDiscovered", target: "iron" },
     completed: false,
     order: 7,

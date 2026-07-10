@@ -27,7 +27,10 @@ function getPageContent(pageNumber) {
   }
   const mission = SORTED_MISSIONS[pageNumber - 1];
   if (!mission) {
-    return { title: "계속 진행 중", body: "새로운 페이지를 준비하고 있습니다." };
+    return {
+      title: "여기까지가 현재 버전입니다",
+      body: "철의 탄생까지 확인하셨습니다. 더 많은 원소와 별의 다음 단계는 업데이트 예정입니다.",
+    };
   }
   return { title: mission.title, body: mission.description };
 }

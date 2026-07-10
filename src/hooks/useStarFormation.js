@@ -8,7 +8,7 @@ import {
   REQUIRED_HELIUM_COUNT,
 } from "../utils/starFusion.js";
 
-const STAR_PROXIMITY_THRESHOLD_PERCENT = 5; // 8 → 5
+const STAR_PROXIMITY_THRESHOLD_PERCENT = 5;
 
 function getDistancePercent(a, b) {
   const dx = a.x - b.x;
@@ -182,15 +182,21 @@ export function useStarFormation() {
     );
 
     const now = Date.now();
-    setGameProgress((prev) => ({
-      ...prev,
-      starGenerators: (prev.starGenerators || []).filter((entry) => entry.id !== generatorId),
-      canvasElements: (prev.canvasElements || []).filter(
-        (entry) => entry.id !== nearbyHelium.id && !extras.consumedEntryIds.has(entry.id)
-      ),
-      stars: [...(prev.stars || []), buildNewStar(droppedPosition, extras)],
-      milestones: markFirstStarMilestone(prev, now),
-    }));
+    setGameProgress((prev) => {
+      let milestones = markFirstStarMilestone(prev, now);
+      if (extras.addedElementIds.length > 0) {
+        milestones = markAddedToStarMilestone({ ...prev, milestones }, now);
+      }
+      return {
+        ...prev,
+        starGenerators: (prev.starGenerators || []).filter((entry) => entry.id !== generatorId),
+        canvasElements: (prev.canvasElements || []).filter(
+          (entry) => entry.id !== nearbyHelium.id && !extras.consumedEntryIds.has(entry.id)
+        ),
+        stars: [...(prev.stars || []), buildNewStar(droppedPosition, extras)],
+        milestones,
+      };
+    });
 
     return { success: true };
   }
@@ -217,15 +223,21 @@ export function useStarFormation() {
     );
 
     const now = Date.now();
-    setGameProgress((prev) => ({
-      ...prev,
-      starGenerators: (prev.starGenerators || []).filter((entry) => entry.id !== nearbyGenerator.id),
-      canvasElements: (prev.canvasElements || []).filter(
-        (entry) => entry.id !== heliumEntryId && !extras.consumedEntryIds.has(entry.id)
-      ),
-      stars: [...(prev.stars || []), buildNewStar(droppedPosition, extras)],
-      milestones: markFirstStarMilestone(prev, now),
-    }));
+    setGameProgress((prev) => {
+      let milestones = markFirstStarMilestone(prev, now);
+      if (extras.addedElementIds.length > 0) {
+        milestones = markAddedToStarMilestone({ ...prev, milestones }, now);
+      }
+      return {
+        ...prev,
+        starGenerators: (prev.starGenerators || []).filter((entry) => entry.id !== nearbyGenerator.id),
+        canvasElements: (prev.canvasElements || []).filter(
+          (entry) => entry.id !== heliumEntryId && !extras.consumedEntryIds.has(entry.id)
+        ),
+        stars: [...(prev.stars || []), buildNewStar(droppedPosition, extras)],
+        milestones,
+      };
+    });
 
     return { success: true };
   }
@@ -280,7 +292,7 @@ export function useStarFormation() {
       const products = generateExplosionProducts(star.explodeSeconds);
       const newEntries = products.map((elementId, index) => {
         const angle = (index / products.length) * Math.PI * 2;
-        const jitterRadius = 3 + Math.random() * 2; // 6 + Math.random()*4 → 3~5 범위로 축소
+        const jitterRadius = 3 + Math.random() * 2;
         return {
           id: createElementEntryId(),
           elementId,

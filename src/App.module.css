@@ -5,22 +5,3 @@
   background-color: var(--color-bg-void);
   overflow: hidden;
 }
-
-.resetButton {
-  position: fixed;
-  bottom: var(--spacing-sm);
-  right: var(--spacing-sm);
-  z-index: 2000;
-  background-color: rgba(255, 111, 111, 0.15);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-
-.resetButton:hover {
-  color: var(--color-accent-danger);
-  border-color: var(--color-accent-danger);
-}

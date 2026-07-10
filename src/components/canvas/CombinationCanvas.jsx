@@ -12,8 +12,9 @@ import styles from "./CombinationCanvas.module.css";
 
 let effectCounter = 0;
 
-export default function CombinationCanvas() {
-  const { gameProgress, moveCanvasElement } = useGame();
+export default function CombinationCanvas({ discardZoneRef }) {
+  const { gameProgress, moveCanvasElement, discardParticle, discardCanvasElement, discardStarGenerator } =
+    useGame();
   const { attemptCombination } = useCombination();
   const { attemptStarFormation, attemptGeneratorDrop, attemptHeliumDropOnGenerator, attemptAddToStar } =
     useStarFormation();
@@ -85,7 +86,9 @@ export default function CombinationCanvas() {
           key={particle.id}
           particle={particle}
           containerRef={containerRef}
+          discardZoneRef={discardZoneRef}
           onDragEnd={handleParticleDragEnd}
+          onDiscard={discardParticle}
         />
       ))}
       {summonedElements.map((entry) => (
@@ -93,7 +96,9 @@ export default function CombinationCanvas() {
           key={entry.id}
           entry={entry}
           containerRef={containerRef}
+          discardZoneRef={discardZoneRef}
           onDragEnd={handleElementDragEnd}
+          onDiscard={discardCanvasElement}
         />
       ))}
       {starGenerators.map((entry) => (
@@ -101,7 +106,9 @@ export default function CombinationCanvas() {
           key={entry.id}
           entry={entry}
           containerRef={containerRef}
+          discardZoneRef={discardZoneRef}
           onDragEnd={handleStarGeneratorDragEnd}
+          onDiscard={discardStarGenerator}
         />
       ))}
       {activeStars.map((star) => (

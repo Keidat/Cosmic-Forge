@@ -13,6 +13,8 @@
   cursor: grab;
   touch-action: none;
   transition: left 300ms cubic-bezier(0.34, 1.56, 0.64, 1), top 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: elementFloat var(--float-duration, 3600ms) var(--float-delay, 0ms) ease-in-out infinite;
+  will-change: transform;
   z-index: 20;
 }
 
@@ -20,6 +22,7 @@
   transition: none;
   cursor: grabbing;
   z-index: 60;
+  animation: none;
 }
 
 .symbol {
@@ -27,4 +30,22 @@
   color: var(--element-color, var(--color-accent-gold));
   font-weight: 600;
   pointer-events: none;
+}
+
+@keyframes elementFloat {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    transform: translate(calc(-50% + var(--float-x, 4px)), calc(-50% - var(--float-y, 4px)));
+  }
+  50% {
+    transform: translate(calc(-50% - var(--float-x, 4px)), calc(-50% + var(--float-y, 4px)));
+  }
+  75% {
+    transform: translate(calc(-50% + var(--float-y, 4px)), calc(-50% + var(--float-x, 4px)));
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
 }

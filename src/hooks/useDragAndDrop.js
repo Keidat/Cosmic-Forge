@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 
-export function useDragAndDrop({ containerRef, position, onDrop }) {
+function isPointInRect(clientX, clientY, rect) {
+  return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+}
+
+export function useDragAndDrop({ containerRef, position, onDrop, discardZoneRef, onDiscard }) {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ clientX: 0, clientY: 0 });
@@ -24,6 +28,16 @@ export function useDragAndDrop({ containerRef, position, onDrop }) {
     if (!isDragging) return;
     setIsDragging(false);
     event.currentTarget.releasePointerCapture(event.pointerId);
+
+    // 드롭 지점이 "저 멀리 보내기" 구역 위라면 일반 조합 판정 대신 그쪽으로 보낸다
+    if (discardZoneRef?.current && onDiscard) {
+      const zoneRect = discardZoneRef.current.getBoundingClientRect();
+      if (isPointInRect(event.clientX, event.clientY, zoneRect)) {
+        setDragOffset({ x: 0, y: 0 });
+        onDiscard();
+        return;
+      }
+    }
 
     const finalPosition = {
       x: position.x + dragOffset.x,
