@@ -4,7 +4,7 @@ import { MISSIONS } from "../../data/missions.js";
 import PageFlipEffect from "./PageFlipEffect.jsx";
 import styles from "./Guidebook.module.css";
 
-const SORTED_MISSIONS = [...MISSIONS].sort((a, b) => a.order - b.order);
+const SORTED_MISSIONS = [...MISSIONS].filter((m) => m.inGuidebook).sort((a, b) => a.order - b.order);
 
 // "첫 별 탄생" 단계에서만 노출되는 대비책 안내 (수소 12개가 필요한데, 처음 나온 입자를 이미 다 썼을 경우)
 const PARTICLE_SHORTAGE_TIP =

@@ -3,7 +3,7 @@ import { useGame } from "../context/GameContext.jsx";
 import { MISSIONS } from "../data/missions.js";
 import { evaluateCondition } from "../utils/conditionEvaluator.js";
 
-const SORTED_MISSIONS = [...MISSIONS].sort((a, b) => a.order - b.order);
+const SORTED_MISSIONS = [...MISSIONS].filter((m) => m.inGuidebook).sort((a, b) => a.order - b.order);
 
 export function useGuidebook() {
     const { gameProgress, setGameProgress } = useGame();

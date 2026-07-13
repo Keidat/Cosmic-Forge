@@ -7,6 +7,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "hydrogen" },
     completed: false,
     order: 1,
+    inGuidebook: true,
   },
   {
     id: "mission_create_helium",
@@ -16,6 +17,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "helium" },
     completed: false,
     order: 2,
+    inGuidebook: true,
   },
   {
     id: "mission_create_lithium",
@@ -24,6 +26,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "lithium" },
     completed: false,
     order: 3,
+    inGuidebook: true,
   },
   {
     id: "mission_create_first_star",
@@ -33,6 +36,7 @@ export const MISSIONS = [
     condition: { type: "starCreated" },
     completed: false,
     order: 4,
+    inGuidebook: true,
   },
   {
     id: "mission_star_first_explosion",
@@ -41,6 +45,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "carbon" },
     completed: false,
     order: 5,
+    inGuidebook: true,
   },
   {
     id: "mission_add_element_to_star",
@@ -50,6 +55,7 @@ export const MISSIONS = [
     condition: { type: "addedToStar" },
     completed: false,
     order: 6,
+    inGuidebook: true,
   },
   {
     id: "mission_create_iron",
@@ -59,6 +65,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "iron" },
     completed: false,
     order: 7,
+    inGuidebook: true,
   },
   {
     id: "mission_obtain_nitrogen",
@@ -67,6 +74,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "nitrogen" },
     completed: false,
     order: 8,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_oxygen",
@@ -75,6 +83,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "oxygen" },
     completed: false,
     order: 9,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_neon",
@@ -83,6 +92,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "neon" },
     completed: false,
     order: 10,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_magnesium",
@@ -91,6 +101,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "magnesium" },
     completed: false,
     order: 11,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_silicon",
@@ -99,6 +110,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "silicon" },
     completed: false,
     order: 12,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_sulfur",
@@ -107,6 +119,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "sulfur" },
     completed: false,
     order: 13,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_phosphorus",
@@ -115,6 +128,7 @@ export const MISSIONS = [
     condition: { type: "elementDiscovered", target: "phosphorus" },
     completed: false,
     order: 14,
+    inGuidebook: false,
   },
   {
     id: "mission_obtain_all_elements",
@@ -123,6 +137,7 @@ export const MISSIONS = [
     condition: { type: "allElementsDiscovered" },
     completed: false,
     order: 15,
+    inGuidebook: false,
   },
 ];
 
