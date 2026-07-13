@@ -1,7 +1,63 @@
-.canvas {
+/* .canvas {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 100vh;
   overflow: hidden;
+} */
+
+.canvas {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   min-height: 100vh;
+   overflow: hidden;
+  background-color: var(--color-bg-void);
+ }
+
+.canvas::before,
+.canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-repeat: repeat;
+}
+
+/* 작고 흐릿한 별들 (촘촘하게) */
+.canvas::before {
+  background-image:
+    radial-gradient(1px 1px at 40px 60px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 120px 20px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 200px 140px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 260px 80px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 320px 220px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 60px 240px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 160px 300px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 340px 20px, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 380px 380px;
+  animation: starTwinkleDim 5s ease-in-out infinite alternate;
+}
+
+/* 크고 밝은 별들 (드문드문, 은은한 발광) */
+.canvas::after {
+  background-image:
+    radial-gradient(1.6px 1.6px at 80px 100px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 240px 260px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1.6px 1.6px at 360px 60px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 40px 320px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.6px 1.6px at 300px 380px, rgba(255, 255, 255, 0.85), transparent);
+  background-size: 420px 420px;
+  animation: starTwinkleBright 4s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes starTwinkleDim {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+
+@keyframes starTwinkleBright {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
 }

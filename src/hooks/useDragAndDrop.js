@@ -40,8 +40,8 @@ export function useDragAndDrop({ containerRef, position, onDrop, discardZoneRef,
     }
 
     const finalPosition = {
-      x: position.x + dragOffset.x,
-      y: position.y + dragOffset.y,
+      x: Math.min(90, Math.max(10, position.x + dragOffset.x)),
+      y: Math.min(90, Math.max(10, position.y + dragOffset.y)),
     };
 
     setDragOffset({ x: 0, y: 0 });

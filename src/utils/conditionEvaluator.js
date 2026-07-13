@@ -18,13 +18,11 @@ export function evaluateCondition(condition, gameProgress) {
       return Boolean(gameProgress.milestones?.firstStarCreated);
     case "addedToStar":
       if (gameProgress.milestones?.hasAddedToStarOnce) return true;
-      // 과거 기록 누락 대비: 이 원소들은 별에 재료를 추가해야만 나올 수 있으므로,
-      // 하나라도 발견했다면 이미 재료 추가를 해낸 것과 같다.
       return STAR_ADD_ONLY_ELEMENT_IDS.some((id) => gameProgress.elements[id]?.discovered);
+    case "allElementsDiscovered":
+      return ELEMENTS.every((element) => gameProgress.elements[element.id]?.discovered);
     case "firstElementEver":
       return Object.values(gameProgress.elements).some((element) => element.discovered);
-    case "lifeElementsCompleted":
-      return gameProgress.milestones.lifeElementsCompleted;
     case "afterBigBang":
       return gameProgress.hasSeenOpening;
     case "originFirstSeen":

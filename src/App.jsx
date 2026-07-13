@@ -13,7 +13,7 @@ function MainExperience() {
   return (
     <div className={styles.mainExperience}>
       <CombinationCanvas discardZoneRef={discardZoneRef} />
-+      <DiscardZone ref={discardZoneRef} />
+      <DiscardZone ref={discardZoneRef} />
       <Sidebar />
       <Guidebook />
     </div>

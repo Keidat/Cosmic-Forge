@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ParticleObject.module.css";
 
 const PARTICLE_SIZE_PX = { proton: 26, neutron: 26, electron: 18 }; // 22/22/14 → 26/26/18
+const PARTICLE_LABEL_KO = { proton: "양성자", neutron: "중성자", electron: "전자" };
 const BOUNCE_DURATION_MS = 350;
 
 export default function ParticleObject({ particle, containerRef, discardZoneRef, onDragEnd, onDiscard }) {
@@ -94,7 +95,7 @@ export default function ParticleObject({ particle, containerRef, discardZoneRef,
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      title={particle.type}
+      title={PARTICLE_LABEL_KO[particle.type]}
     />
   );
 }
